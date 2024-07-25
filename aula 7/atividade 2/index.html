@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        const contarVogais = (string)=>{
+            var soma = 0
+            for(let x = 0; x<string.lenght ;x++){
+
+                if(string[x] == 'a' || string[x] == 'b' || string[x] == 'c' || string[x] == 'd' || string[x] == 'e' ){
+                    soma++
+                }
+                
+            }
+            return soma
+        }
+        let string = "teste"
+        console.log(contarVogais(string))
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        function converterTemperatura(temperatura){
+            let resultado = temperatura * (9/5) + 32
+            console.log(`A temperatura ${temperatura} em celcius é quivalente à ${resultado} Fahrenheit`)
+        }
+
+        function fahrenheit(){
+            let temp = prompt('Digite o valor da temperatura')
+            converterTemperatura(temp)
+        }
+
+        fahrenheit()
+
+    </script>
+</body>
+</html>
