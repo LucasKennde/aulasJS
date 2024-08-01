@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="input">
+    <input type="text" id="input2">
+    <button onclick="getValue()">Enviar</button>
+    <p></p>
+
+
+    <script>
+        function getValue(){
+            let input = document.querySelector('#input').value;
+            let input2 = document.querySelector('#input2').value;
+            let paragrafo = document.querySelector('p')
+
+            paragrafo.innerText = Number(input)+ Number(input2)
+            // if(input === "" ){
+            //     alert("Digite algo")
+            //     return
+            // }
+            console.log(Number(input)+ Number(input2))
+
+        }
+    </script>
+</body>
+</html>
