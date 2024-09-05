@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="#" id="cadastrarAluno" method="POST">
+        <input type="text" name="" id="novoAluno" placeholder="Digite o nome do novo aluno">
+        <button>Cadastrar</button>
+    </form>
+
+    <form action="#" id="excluirAluno" method="post">
+        <select name="alunos" id="alunosCadastrados">
+
+        </select>
+    </form>
+    <script>
+
+    
+    const alunos = {
+  "estudantes": [
+    {
+      "id": 1,
+      "nome": "Ana Silva",
+      "idade": 20,
+      "notas": {
+        "matematica": 85,
+        "portugues": 90
+      }
+    },
+    {
+      "id": 2,
+      "nome": "Carlos Oliveira",
+      "idade": 22,
+      "notas": {
+        "matematica": 78,
+        "portugues": 82
+      }
+    },
+    {
+      "id": 3,
+      "nome": "Maria Souza",
+      "idade": 21,
+      "notas": {
+        "matematica": 92,
+        "portugues": 88
+      }
+    }
+  ]
+}
+  const {estudantes} = JSON.parse(JSON.stringify(alunos))
+  mostrarAlunos()
+
+  const formCadastro = document.getElementById('cadastrarAluno')
+  formCadastro.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const novoAluno = document.getElementById('novoAluno').value
+    
+    const newAluno = {
+        id: estudantes.length + 1,
+        nome: novoAluno,
+        idade: 20,
+        notas: {
+            matematica: 0,
+            portugues: 0
+            }
+        }
+    
+    estudantes.push(newAluno);
+    console.log(estudantes)
+    mostrarAlunos()
+    formCadastro.reset()
+  })
+  function mostrarAlunos(){
+    const listaAlunos = document.getElementById('alunosCadastrados')
+    listaAlunos.innerHTML = ''
+    estudantes.forEach(element => {
+        listaAlunos.innerHTML  += `<option value=${element.id}>${element.nome}</option>`
+    });
+  }
+  </script>
+</body>
+</html>
