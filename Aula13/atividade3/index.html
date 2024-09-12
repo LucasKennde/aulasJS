@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="#" id="formulario">
+        <input type="text" name="nome" id="nome" placeholder="Nome da loja">
+        <input type="text" name="cidade" id="cidade" placeholder="Cidade">
+        <input type="text" name="valorTotal" id="valorTotal" placeholder="Valor total vendido no mes">
+        <button>Enviar</button>
+    </form>
+    <div id="mensagem"></div>
+
+    <script>
+        const formulario = document.getElementById('formulario')
+        
+        formulario.addEventListener('submit', () => {
+            const name = document.getElementById('nome')
+            const cidade = document.getElementById('cidade')
+            const valorTotal = document.getElementById('valorTotal')
+            try {
+                validarFormulario(event,name.value, cidade.value, valorTotal.value);
+            } catch (erro) {
+                document.getElementById("mensagem").innerHTML = erro
+            } finally {
+                document.getElementById("mensagem").innerHTML += '<br>Solicitação finalizada'
+            }
+        })
+
+        function validarFormulario(event, nome, cidade, valorTotal) {
+            event.preventDefault();
+            if(isNaN(parseInt(valorTotal))){
+                throw "O valor total precisa ser um numero"
+            }
+            if ( valorTotal < 0) {
+                throw "O valor total precisa ser maior que zero"
+            }
+        
+            if (typeof nome !== 'string' || nome.trim() =='' || typeof cidade !=='string' || cidade.trim() === '' || valorTotal.trim() === ''){
+                throw "Todos os campos precisam estar preenchidos"
+            }
+
+            
+        }
+
+
+    </script>
+</body>
+
+</html>

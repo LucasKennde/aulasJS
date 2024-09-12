@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="#" id="formulario">
+        <input type="text" name="name" id="name" placeholder="name">
+        <input type="text" name="email" id="email" placeholder="Email">
+        <input type="text" name="idade" id="idade" placeholder="idade">
+        <button>Enviar</button>
+    </form>
+
+
+    <script>
+        const formulario = document.getElementById('formulario')
+
+        formulario.addEventListener('submit', () => {
+            const name = document.getElementById('name')
+            const email = document.getElementById('email')
+            const idade = document.getElementById('idade')
+            try {
+                validarFormulario(event,name.value, email.value, idade.value);
+            } catch (erro) {
+                console.error("Ocorreu um erro! ", erro)
+            }
+        })
+
+        function validarFormulario(event, nome, email, idade) {
+            event.preventDefault();
+           
+            if (isNaN(parseInt(idade)) || idade < 0) {
+                throw "A idade deve ser um número positivo"
+            }
+            if (idade < 18) {
+                throw "Você é menor de idade e não pode acessar este conteúdo.";
+            }
+            if (typeof nome !== 'string' || nome.trim() =='' || typeof email !=='string' || email.trim() === ''){
+                throw "Todos os campos precisam estar preenchidos"
+            }
+
+            console.log("Acesso permitido. Bem-vindo!");
+        }
+
+
+    </script>
+</body>
+
+</html>
