@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="resultado"></div>
+    <script>
+      const resultado = document.querySelector(".resultado");
+      const pidgey = fetch("https://pokeapi.co/api/v2/pokemon/pidgey");
+      const beedrill = fetch("https://pokeapi.co/api/v2/pokemon/beedrill");
+      const venusaur = fetch("https://pokeapi.co/api/v2/pokemon/venusaur");
+
+      async function mostrar3Pokemon() {
+        try {
+          const responses = await Promise.all([pidgey, beedrill, venusaur]);
+
+          const data = await Promise.all(
+            responses.map((response) => {
+              if (!response.ok) {
+                throw new Error(`Erro na requisição ${response.status}`);
+              }
+              return response.json();
+            })
+          );
+
+          return data;
+        } catch (error) {
+          console.error("erro nas requisições", error);
+        }
+      }
+
+      mostrar3Pokemon()
+        .then((data) => {
+          data.map((pokemon) => {
+            console.log(`Pokemon: ${pokemon.name}`);
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    </script>
+  </body>
+</html>
